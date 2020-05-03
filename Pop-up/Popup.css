@@ -1,0 +1,76 @@
+body{
+    background: #ddd;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2em;
+    color: #111;
+}
+
+.wrapper{
+    max-width: 960px;
+    margin: 10% auto;
+    text-align: center;
+    line-height: 2em;
+}
+
+.button{
+    border: 3px solid #111;
+    padding: 10px;
+    text-decoration: none;
+    color: #111;
+}
+
+.popup{
+    /* take away the document flow space and fix it to the top */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* set the background color grey and opacity 0.6 to have 
+       the pop-up visual effect */
+    background: rgba(0, 0, 0, 0.6);
+
+    /* by default popup should display as none  */
+    display: none;
+}
+
+/* use id and class target the img and cross, then style it */
+#xmas-popup .popup-content{
+    width: 600px;
+    height: 600px;
+    margin: 100px auto;
+    position: relative;
+    /* border make the popup more obvious */
+    border: 5px solid #fff;
+}
+
+.close{
+    /* place cross top right and strip default styling */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    text-decoration: none;
+    line-height: 0;
+
+    /* style color, border and background */
+    border: 3px solid #fff;
+    color: #fff;
+    background: #222;
+    border-radius: 50%;
+
+    /* give it width and padding, then it will look like a close */
+    padding: 9px 0 11px;
+    width: 20px;
+    text-align: center;
+}
+
+/* In markup line-12 div.popup has id, line 30 a-tag href="#xmas-popup", 
+   it means when a-tag is clicked, line 12 div.popup will become a target,
+   after that we can style the popup display: block */
+.popup:target{
+    display: block;
+}
+
+/* a.close has href="#", when it is clicked, div.popup is not a target
+   anymore, so pseudo class no effect, as default popup will display: none */
