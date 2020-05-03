@@ -1,0 +1,106 @@
+body{
+    background: #111;
+    margin: 0;
+}
+
+h2{
+    color: #fff;
+    position: relative;
+    margin-top: 200px;
+    text-align: center;
+    font-family: 'Mountains of Christmas';
+    font-size: 4em;
+    letter-spacing: 0.2em;
+    text-shadow: 1px 2px 10px rgba(255, 65, 185, 1);
+    /* text-shadow: 1px horizontal, 2px vertical, 10px blur 
+       radius, and rgba color  */
+}
+
+#wire{
+    /* text-align: centralize the li to the center of the page */
+    text-align: center;
+    /* white-space: nowrap list all the li in one line rather then several lines */
+    white-space: nowrap;
+    position: absolute;
+    padding: 0;
+    width: 100%;
+    top: -80px;
+    border-bottom: 3px solid #fff;
+    height: 100px;
+}
+
+#wire li{
+    /* position relative make each li has own space; if absolute all li will become one li on page */
+    position: relative;
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 15px;
+    padding: 0;
+    width: 15px;
+    height: 30px;
+    top: 102px;
+    border-radius: 50%;
+    background-color: #fff;
+
+    /* Animation as follow */
+    animation-name: even-flash;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+#wire li:nth-child(odd){
+    animation-name: odd-flash;
+}
+
+/* before each li insert empty content and style it as light cap */
+#wire li:before{
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    border-radius: 4px;
+    top: -5px;
+    left: 0;
+    background: #444;
+}
+
+/* Animation */
+
+/* style even-flash start strong light 0%, then dim light 50%, then 
+   strong light again 100% */
+@keyframes even-flash {
+    0%, 100%{
+        background: rgba(255,230, 65, 1);
+        /* box-shadow: 0px horizontal length
+                       2px vertical length 
+                       20px blur radius
+                       4px spread radius*/
+        box-shadow: 0px 2px 20px 4px rgba(255,230, 65, 1);
+    }
+    50%{
+        background: rgba(255,230, 65, 0.5);
+        box-shadow: 0px 2px 20px 4px rgba(255,230, 65, 0.3);
+    }
+}
+
+/* opposie as even-flash, odd-flash start dim light 0%, then strong light
+   50%, then dim light again 100%, together we have twinkel light effect  */
+@keyframes odd-flash {
+    50%{
+        background: rgba(255,65,185, 1);
+        /* box-shadow: 0px horizontal length
+                       2px vertical length 
+                       20px blur radius
+                       4px spread radius*/
+        box-shadow: 0px 2px 20px 4px rgba(255,65,185, 1);
+    }
+    0%, 100%{
+        background: rgba(255,65,185, 0.5);
+        box-shadow: 0px 2px 20px 4px rgba(255,65,185, 0.3);
+    }
+}
+
+
+
+
