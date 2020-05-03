@@ -1,0 +1,93 @@
+body{
+    background: #533872;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+form{
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 20% auto;
+}
+
+form label{
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+form input{
+    margin: 0 10px;
+    /* padding top, left+right, bottom */
+    padding: 8px 8px 6px;
+    border: 0;
+    color: #444;
+}
+
+/* style tooltip */
+.tooltip{
+    /* style tooltip span position relative, keep the document flow space,
+       later can style tooltip message position absolute */
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 12px;
+    font-size: 20px;
+    /* style it to a complete circle */
+    border-radius: 100%;
+    cursor: help;
+}
+
+.tooltip::before, .tooltip::after{
+    position: absolute;
+    left: 50%;
+    /* before hover, hide the tooltip message */
+    opacity: 0;
+
+    /* property changing in CSS, animate it all, from one state to another.
+       ease the tooltip soomthly, better visual effect */
+    transition: all ease 0.5s;
+}
+
+/* insert the triangle before span */
+.tooltip::before{
+    content: "";
+
+    /* CSS style triangle, top 10px, right 8px, bottom 0 and left 8px.
+       only top rgba color, the rest are transparent */
+    border-width: 10px 8px 0 8px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.3) transparent transparent transparent;
+
+    margin-left: -8px;
+    top: -20px;
+}
+
+.tooltip::after{
+    /* css trick, use attr() to grab the message content from markup */
+    content: attr(data-tooltip);
+
+    background-color: rgba(0, 0, 0, 0.3);
+    /* the top position is same with triangle, both are in the 
+       same horizontal level */
+    top: -20px;
+
+    font-size: 14px;
+    width: 300px;
+    margin-left: -150px;
+    padding: 14px;
+    border-radius: 10px;
+    color: #eee;
+
+    /* translateY move the message upward, the distance is 100% of the message height */
+    transform: translateY(-100%);
+}
+
+/* only when hover, show the tooltip message  */
+.tooltip:hover::before, .tooltip:hover::after{
+    opacity: 1;
+}
+
+
+
+
+
